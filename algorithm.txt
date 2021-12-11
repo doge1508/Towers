@@ -1,0 +1,12 @@
+Hanoi(int numBlocks)
+  let towers = [[], [], []];
+  <create blocks in towers[0]>
+  Solve(0, -1, numBlocks);
+
+Solve(int fromIndex, int direction, int blockSize)
+  if (towers[fromIndex].length === 0)
+    return;
+  Solve(fromIndex, -direction, blockSize - 1);
+  int toIndex = (fromIndex + direction) % 3;
+  towers[toIndex].push(towers[fromIndex].pop());
+  Solve(fromIndex - direction, -direction, blockSize - 1);
